@@ -16,6 +16,13 @@ Needs:
 * Add tags. Automatically suggest tags.
 * A GUI
 
+## What can it do? (at the moment)
+
+* Group your individual scans into multipage TIFF files
+* Extract text from the images via OCR
+* Store it to a database
+* Use a Bayesian classifier to find proximity of a text or a document to another
+
 ## Backend
 
 * Use tesseract to extract text and create PDFs.
