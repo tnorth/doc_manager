@@ -29,9 +29,16 @@ Needs:
 * Destination folder and names are selectable and the file is mode there.
 
 ### Second part: presenting documents
-* IN another tab, a document hierarchy, following the filesystem, is shown.
+* In another tab, a document hierarchy, following the filesystem, is shown.
 * Documents can be searched (containing text), or by label
-* Actual PDF is shown in a TAB. Ideally, search is highlighted
+* Actual PDF is shown in a Tab. Ideally, the search keywords are highlighted
+
+## What can it do? (at the moment)
+
+* Group your individual scans into multipage TIFF files
+* Extract text from the images via OCR
+* Store it to a database
+* Use a Bayesian classifier to find proximity of a text or a document to another
 
 ## Backend
 
