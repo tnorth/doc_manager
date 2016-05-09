@@ -6,8 +6,8 @@ import fnmatch
 import subprocess
 
 class PaperScan:
-    def __init__(self):
-        self.root_dir = "papers"
+    def __init__(self, root_dir="papers"):
+        self.root_dir = root_dir
         self.img_ext = ["png", "tif", "tiff", "jpg"]
         self.lang = "fra"
     
@@ -15,7 +15,7 @@ class PaperScan:
         # Look for image files and PDFs
         img_files = []
         pdf_files = []
-        for root, dirnames, filenames in os.walk(self.root_dir):
+        for root, dirnames, filenames in sorted(os.walk(self.root_dir)):
             # Look for images files of various extensions
             for ext in self.img_ext:
                 ff_in_dir = []

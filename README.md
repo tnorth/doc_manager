@@ -16,6 +16,23 @@ Needs:
 * Add tags. Automatically suggest tags.
 * A GUI
 
+## Proposed workflow
+
+* Images are scanned in batch with an Automatic Document feeder (ADF). Contrary to programs such as Paperworks, the focus is not on the scanning, which is considered a solved problem, but the organization of documents.
+* Scanned images are always deposited in a folder, for instance doc_dump/
+* Existing stored documents are placed in a directory structure that the user can browse with his file explorer, with (sub-)directory names that make sense.
+* This program starts a GUI. Documents in doc_dump/ are shown. Their names are computer-generated and depend on the scanning software.
+* A document is shown to the user. Its text is extracted by tesseract.
+* Based on the existing database of documents, a location in the hierarchy is suggested via a Bayesian classifier.
+* Also, labels are suggested, based on the content of the document and labels of nearby documents.
+* A name must be picked. Suggestions can be made.
+* Destination folder and names are selectable and the file is mode there.
+
+### Second part: presenting documents
+* IN another tab, a document hierarchy, following the filesystem, is shown.
+* Documents can be searched (containing text), or by label
+* Actual PDF is shown in a TAB. Ideally, search is highlighted
+
 ## Backend
 
 * Use tesseract to extract text and create PDFs.

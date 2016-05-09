@@ -16,8 +16,8 @@ def sha256(fname):
 
 
 class Database:
-    def __init__(self):
-        self.db_name="papers.db"
+    def __init__(self, db_name="papers.db"):
+        self.db_name=db_name
         self.conn = sqlite3.connect(self.db_name)
         self.cur = self.conn.cursor()
     
