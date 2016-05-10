@@ -1,6 +1,10 @@
 This repository hosts scripts (and hopefully later a GUI) to manage documents, typically scanned administrative papers.
 
-## Concept:
+# Concepts:
+
+There are two main distinct workflows:
+
+## When scanned document already exist and are placed in folders and subfolders
 
 Hypothesis:
 
@@ -11,34 +15,63 @@ Hypothesis:
 * Usually, existing files are not modified
 
 Needs:
-* Search by keywords
-* Suggest name for newly scanned documents
-* Add tags. Automatically suggest tags.
-* A GUI
 
-## Proposed workflow
+* OCR images
+* Group them when possible to generate a single PDF
+* Index them and enable searches
+* A GUI to display them, add tags, etc
 
-* Images are scanned in batch with an Automatic Document feeder (ADF). Contrary to programs such as Paperworks, the focus is not on the scanning, which is considered a solved problem, but the organization of documents.
-* Scanned images are always deposited in a folder, for instance doc_dump/
+## When documents already exist (case above), and new ones are scanned in batch to a dump folder
+
+Hypothesis:
+
+* Images are scanned in batch with an Automatic Document feeder (ADF). In this case, contrary to programs such as Paperwork, the focus is not on the scanning (considered a solved problem), but the organization of documents in the existing filesystem layout.
+* Scanned images are always deposited in a folder, for instance `doc_dump/`
 * Existing stored documents are placed in a directory structure that the user can browse with his file explorer, with (sub-)directory names that make sense.
-* This program starts a GUI. Documents in doc_dump/ are shown. Their names are computer-generated and depend on the scanning software.
-* A document is shown to the user. Its text is extracted by tesseract.
-* Based on the existing database of documents, a location in the hierarchy is suggested via a Bayesian classifier.
-* Also, labels are suggested, based on the content of the document and labels of nearby documents.
-* A name must be picked. Suggestions can be made.
-* Destination folder and names are selectable and the file is mode there.
+* Scanned documents are image with computer-generated filenames, depending on the scanning software.
 
-### Second part: presenting documents
-* In another tab, a document hierarchy, following the filesystem, is shown.
+Needs:
+
+* Text of each image is OCRed
+* Based on the existing database of documents, a location in the hierarchy is suggested via a Bayesian classifier.
+* Potentially, labels are suggested, based on the content of the document and labels of nearby documents.
+* A name must be picked. Suggestions can be made.
+* Multipage documents can be grouped. Automatic suggestion can be made via a classifier.
+* Destination folder and names are selectable and the file is moved there.
+
+## Implementation
+
+* First workflow requires a command-line tool only.
+* Second workflow requires a GUI.
+
+
+## GUI description
+
+### Adding newly scanned documents
+
+* The document hierarchy on disk is shown, and is browseable
+* The `doc_dump` folder can be loaded. In this case, all images belonging to the folder are shown (with pan and zoom)
+* OCR is applied on these images
+* Images can be deleted (blank pages), moved up and down, and merged down (multipage document).
+* File names and location are suggested, files can be moved and renamed.
+
+### Browsing existing documents
+
 * Documents can be searched (containing text), or by label
 * Actual PDF is shown in a Tab. Ideally, the search keywords are highlighted
 
-## What can it do? (at the moment)
+# What can these script do? (at the moment)
+
+## Workflow 1
 
 * Group your individual scans into multipage TIFF files
 * Extract text from the images via OCR
 * Store it to a database
 * Use a Bayesian classifier to find proximity of a text or a document to another
+
+## Workflow 2
+
+* WIP
 
 ## Backend
 
